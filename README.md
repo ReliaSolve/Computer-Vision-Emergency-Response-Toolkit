@@ -3,7 +3,8 @@
 Release version can be found at: http://cver.hrail.crasar.org
 
 ## Visual Studio
-* Microsoft .NET Framework 4.6.1.  Visual Studio will ask whether you want to download it when you open the project and will point you to the download page at https://dotnet.microsoft.com/download/visual-studio-sdks?utm_source=getdotnetsdk&utm_medium=referral
+* Microsoft .NET Framework 4.6.1.
+  * Visual Studio will ask whether you want to download it when you open the project and will point you to the download page at https://dotnet.microsoft.com/download/visual-studio-sdks?utm_source=getdotnetsdk&utm_medium=referral
 * Microsoft Visual Studio 2017 Installer Projects Extension
   * This can be installed by clicking ```Tools -> Extensions and Updates... -> Online``` then entering the name of the extension in the search box
   
