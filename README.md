@@ -10,6 +10,8 @@ Release version can be found at: http://cver.hrail.crasar.org
   
 
 ## Python Setup
+The first time the project is run inside Visual Studio, it will download and install the required Python packages.
+
 * Python 3.6.4
   * https://www.python.org
 * OpenCV
