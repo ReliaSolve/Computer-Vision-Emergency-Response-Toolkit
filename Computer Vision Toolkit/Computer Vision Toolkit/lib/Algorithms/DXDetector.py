@@ -85,7 +85,7 @@ def DebrisDetect(img_path, Params):
 	avg_dim = (((width+height)//2)//3)*2
 
 	# Gaussian Blur
-	proc_img = cv2.GaussianBlur(img, (5,5), Params["LineGaussianIter"])
+	proc_img = cv2.GaussianBlur(cv2.UMat(img), (5,5), Params["LineGaussianIter"])
 
     # Kernel Dilation
 	proc_img = cv2.dilate(proc_img, (5,5), iterations=Params["LineDilationIter"])
@@ -97,7 +97,7 @@ def DebrisDetect(img_path, Params):
 	dst = cv2.Canny(proc_img, Params["LineCannyEdgeLowerBound"], Params["LineCannyEdgeThreshold"])
 	cdst = cv2.cvtColor(dst, cv2.COLOR_GRAY2BGR)
 
-	lines = cv2.HoughLines(dst, 0.7, float(np.pi / 180.0), int(avg_dim/2))
+	lines = cv2.HoughLines(dst, 0.7, float(np.pi / 180.0), int(avg_dim/2)).get()
 
 	# If lines are found
 	if lines is not None:
@@ -124,13 +124,13 @@ def DebrisDetect(img_path, Params):
 	else:
 
 		# Gaussian Blur
-		proc2_img = cv2.GaussianBlur(img, (5,5), Params["CornerGaussianIter"])
+		proc2_img = cv2.GaussianBlur(cv2.UMat(img), (5,5), Params["CornerGaussianIter"])
 
 		# Erosion
 		proc2_img = cv2.erode(proc2_img, (5,5), iterations=Params["CornerErosionIter"])
 
 		# Stronger Bilateral Blur
-		proc2_img = cv2.bilateralFilter(proc2_img, 16, Params["CornerBilateralColor"], Params["CornerBilateralSpace"])
+		proc2_img = cv2.bilateralFilter(proc2_img, 16, Params["CornerBilateralColor"], Params["CornerBilateralSpace"]).get()
 
 		# Shi-Tomasi
 		gray = cv2.cvtColor(proc2_img, cv2.COLOR_BGR2GRAY)
