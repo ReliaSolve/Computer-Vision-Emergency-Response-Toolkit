@@ -92,7 +92,7 @@ def Dehaze(img_path, Params = None, model_path = 'lib/Algorithms/pretrained_aod_
 	x = np.expand_dims(img, axis=0).transpose(0,3,1,2)
 
 	# Loading model weights
-	np_weights = np.load(model_path).item()
+	np_weights = np.load(model_path, allow_pickle=True).item()
 
 	output = aod_net(x, np_weights)
 	output = np.squeeze(output)
